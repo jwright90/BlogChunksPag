@@ -17,13 +17,10 @@ function App() {
   useEffect(()=>{
     const initiateTags = async () => {
       let categories = [...new Set(await blogsData.map(blog => blog.category))]
-
-      setTags(categories.map(category=>({category: [category], state: false})))
+      setTags(categories.map((category)=>({category, selected: true})))
     }
-    
     initiateTags();
   },[])
-
 
   const blogsData = [      
     {title: "First Post", id: 1, category: "interviews"},
